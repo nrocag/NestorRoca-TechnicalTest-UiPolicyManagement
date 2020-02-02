@@ -1,4 +1,8 @@
-<p>policy-list works!</p>
-
-<button mat-button color="primary">Nueva poliza</button>
-<button mat-raised-button color="primary">Primary</button>
+<h2>Polizas de seguro</h2>
+<ul style="list-style-type:square;">
+  <li *ngFor="let policy of policies">
+    <div>policy.name</div>
+    <div><button mat-icon-button>Editar</button></div>
+  </li>
+</ul>
+<button mat-raised-button color="primary" (click)="new()">Nueva poliza</button>

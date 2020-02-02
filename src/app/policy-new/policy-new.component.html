@@ -1,0 +1,37 @@
+<h2>Agregar nueva poliza de seguro</h2>
+<form [formGroup]="policyForm" (submit)="save()">
+  <label for="name">Nombre de la poliza:</label>
+  <div><input type="text" formControlName="name" required>
+  </div>
+  <div>Descripción: </div>
+  <div><input type=" text" formControlName="description"></div>
+  <div>Tipo de cubrimiento de la póliza: </div>
+  <div>
+    <select formControlName="coveringType">
+      <option value="1">Terremoto</option>
+      <option value="2">Incendio</option>
+      <option value="3">Robo</option>
+      <option value="4">Pérdida</option>
+    </select>
+  </div>
+  <div>Porcentaje de la cobertura: </div>
+  <div><input type="text" formControlName="coveragePercentage"></div>
+  <div>Periodo de cobertura definido en meses: </div>
+  <div><input type="text" formControlName="amountMonthsCoverage"></div>
+  <div>Precio: </div>
+  <div><input type="text" formControlName="price"></div>
+  <div>Tipo de Riesgo: </div>
+  <div>
+    <select formControlName="riskType">
+      <option value="1">Bajo</option>
+      <option value="2">Medio</option>
+      <option value="3">Medio-Alto</option>
+      <option value="4">Alto</option>
+    </select>
+  </div>
+  <br />
+  <div>
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+    <button mat-raised-button color="primary" (click)="cancel()">Cancelar</button>
+  </div>
+</form>

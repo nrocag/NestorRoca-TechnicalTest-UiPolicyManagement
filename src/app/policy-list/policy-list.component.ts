@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PolicyService } from '../Services/policy.service';
 import { Policy } from '../Entities/policy';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-policy-list',
@@ -9,8 +10,7 @@ import { Policy } from '../Entities/policy';
 })
 export class PolicyListComponent implements OnInit {
 
-  constructor(public apiService: PolicyService) {
-    console.log("pase por aca");
+  constructor(public apiService: PolicyService, public router: Router) {
   }
 
   private policies: Array<Policy>[];
@@ -20,6 +20,10 @@ export class PolicyListComponent implements OnInit {
       console.log("pase por aca", response);
       this.policies = response;
     });
+  }
+
+  new() {
+    this.router.navigate(['policynew']);
   }
 
   ngOnInit() {
