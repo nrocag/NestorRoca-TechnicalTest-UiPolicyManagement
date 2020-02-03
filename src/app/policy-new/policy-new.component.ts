@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PolicyService } from '../Services/policy.service';
 import { Policy } from '../Entities/policy';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-policy-new',
@@ -11,12 +11,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PolicyNewComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private apiService: PolicyService, private router: Router) {
 
   }
 
   policyForm: FormGroup = this.createForm({
-    name: ["", [Validators.required]],
+    _id: "",
+    name: "",
     description: "",
     amountMonthsCoverage: 0,
     price: 0,
@@ -34,11 +35,19 @@ export class PolicyNewComponent implements OnInit {
   }
 
   save() {
-    console.log(this.policyForm.value);
+    this.apiService.createPolicy(this.policyForm.value).subscribe(response => {
+      if (response.actionResponse.success) {
+        this.router.navigate(['policies']);
+      }
+      else {
+        ////Presentar mensaje.
+      }
+    });
   }
 
-
-  cancel() { }
+  cancel() {
+    this.router.navigate(['policies']);
+  }
 
   ngOnInit() {
   }

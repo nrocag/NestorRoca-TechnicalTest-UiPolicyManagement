@@ -19,28 +19,33 @@ export class PolicyService {
   constructor(public http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
-    return throwError('Error calling the Api');
+    if (error.status >= 500) {
+      return throwError('Error calling the Api'); ////Redirect a pagina de error
+    }
   }
 
   public getAllPolicies(): Observable<any> {
-
-    console.log("getAllPolicies(): Observable<any>");
-
     return this.http.get(`${this.baseApi}/GetAllPolicies`).pipe(
       retry(2), catchError(this.handleError)
     )
   }
 
   public createPolicy(policy: any): Observable<any> {
-
-    console.log(policy);
-
     return this.http.post(
       `${`${this.baseApi}/CreatePolicy`}`,
       JSON.stringify(policy),
       this.httpOptions)
       .pipe(
-        retry(2), catchError(this.handleError)
+        retry(0), catchError(this.handleError)
+      )
+  }
+
+  public deletePolicy(id: string): Observable<any> {
+    return this.http.delete(
+      `${`${this.baseApi}/DeletePolicy?id=${id}`}`,
+      this.httpOptions)
+      .pipe(
+        retry(1), catchError(this.handleError)
       )
   }
 }

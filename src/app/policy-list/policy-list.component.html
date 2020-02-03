@@ -1,8 +1,10 @@
 <h2>Polizas de seguro</h2>
 <ul style="list-style-type:square;">
   <li *ngFor="let policy of policies">
-    <div>policy.name</div>
-    <div><button mat-icon-button>Editar</button></div>
+    <div><button (click)="edit(policy._id)">Editar</button><button (click)="delete(policy._id)">Eliminar</button> &nbsp;
+      <span>{{policy.name}}</span>
+    </div>
+
   </li>
 </ul>
 <button mat-raised-button color="primary" (click)="new()">Nueva poliza</button>

@@ -3,35 +3,35 @@
   <label for="name">Nombre de la poliza:</label>
   <div><input type="text" formControlName="name" required>
   </div>
-  <div>Descripción: </div>
+  <label for="description">Descripción:</label>
   <div><input type=" text" formControlName="description"></div>
-  <div>Tipo de cubrimiento de la póliza: </div>
+  <label for="coveringType">Tipo de cubrimiento de la póliza:</label>
   <div>
-    <select formControlName="coveringType">
-      <option value="1">Terremoto</option>
-      <option value="2">Incendio</option>
-      <option value="3">Robo</option>
-      <option value="4">Pérdida</option>
+    <select type="number" formControlName="coveringType">
+      <option [ngValue]="0" selected>Terremoto</option>
+      <option [ngValue]="1">Incendio</option>
+      <option [ngValue]="2">Robo</option>
+      <option [ngValue]="3">Pérdida</option>
     </select>
   </div>
-  <div>Porcentaje de la cobertura: </div>
-  <div><input type="text" formControlName="coveragePercentage"></div>
-  <div>Periodo de cobertura definido en meses: </div>
-  <div><input type="text" formControlName="amountMonthsCoverage"></div>
-  <div>Precio: </div>
-  <div><input type="text" formControlName="price"></div>
-  <div>Tipo de Riesgo: </div>
+  <label for="coveragePercentage">Porcentaje de la cobertura:</label>
+  <div><input type="number" formControlName="coveragePercentage"></div>
+  <label for="amountMonthsCoverage">Periodo de cobertura definido en meses:</label>
+  <div><input type="number" formControlName="amountMonthsCoverage"></div>
+  <label for="price">Precio:</label>
+  <div><input type="number" formControlName="price"></div>
+  <label for="riskType">Tipo de Riesgo:</label>
   <div>
-    <select formControlName="riskType">
-      <option value="1">Bajo</option>
-      <option value="2">Medio</option>
-      <option value="3">Medio-Alto</option>
-      <option value="4">Alto</option>
+    <select type="number" formControlName="riskType">
+      <option [ngValue]="0" selected>Bajo</option>
+      <option [ngValue]="1">Medio</option>
+      <option [ngValue]="2">Medio-Alto</option>
+      <option [ngValue]="3">Alto</option>
     </select>
   </div>
   <br />
   <div>
     <button mat-raised-button color="primary" type="submit">Guardar</button>
-    <button mat-raised-button color="primary" (click)="cancel()">Cancelar</button>
+    <button mat-raised-button color="primary" type="button" (click)="cancel()">Cancelar</button>
   </div>
 </form>

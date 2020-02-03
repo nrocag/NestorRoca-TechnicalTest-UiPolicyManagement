@@ -1,4 +1,5 @@
 export interface Policy {
+  _id: string;
   name: string;
   description: string;
   amountMonthsCoverage: number

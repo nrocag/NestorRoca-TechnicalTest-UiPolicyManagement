@@ -17,8 +17,12 @@ export class PolicyListComponent implements OnInit {
 
   getData() {
     this.apiService.getAllPolicies().subscribe(response => {
-      console.log("pase por aca", response);
-      this.policies = response;
+      if (response.actionResponse.success) {
+        this.policies = response.policies;
+      }
+      else {
+        ////Presentar mensaje.
+      }
     });
   }
 
@@ -26,8 +30,26 @@ export class PolicyListComponent implements OnInit {
     this.router.navigate(['policynew']);
   }
 
+  edit(id: string) {
+    console.log(id);
+    //this.router.navigate(['policynew']);
+  }
+
+  delete(id: string) {
+    console.log(id);
+
+    this.apiService.deletePolicy(id).subscribe(response => {
+      if (response.actionResponse.success) {
+        this.getData();
+      }
+      else {
+        ////Presentar mensaje.
+      }
+    });
+    //this.router.navigate(['policynew']);
+  }
+
   ngOnInit() {
     this.getData();
   }
-
 }
