@@ -13,7 +13,7 @@ export class PolicyListComponent implements OnInit {
   constructor(public apiService: PolicyService, public router: Router) {
   }
 
-  private policies: Array<Policy>[];
+  public policies: Array<Policy>[];
 
   getData() {
     this.apiService.getAllPolicies().subscribe(response => {
