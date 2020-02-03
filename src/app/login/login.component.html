@@ -1,0 +1,12 @@
+<h2>Ingreso al gestor de polizas de seguro</h2>
+<form [formGroup]="loginForm" (submit)="ok()">
+  <label for="username">Usuario:</label>
+  <div><input type="text" formControlName="username" required>
+  </div>
+  <label for="password">Contraseña:</label>
+  <div><input type="password" formControlName="password"></div>
+  <br />
+  <div>
+    <button mat-raised-button color="primary" type="submit">Aceptar</button>
+  </div>
+</form>

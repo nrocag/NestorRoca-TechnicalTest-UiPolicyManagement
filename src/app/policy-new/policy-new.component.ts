@@ -35,6 +35,8 @@ export class PolicyNewComponent implements OnInit {
   }
 
   save() {
+
+    localStorage.setItem
     this.apiService.createPolicy(this.policyForm.value).subscribe(response => {
       if (response.actionResponse.success) {
         this.router.navigate(['policies']);

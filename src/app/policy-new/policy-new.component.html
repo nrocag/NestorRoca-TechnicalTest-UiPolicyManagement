@@ -7,7 +7,7 @@
   <div><input type=" text" formControlName="description"></div>
   <label for="coveringType">Tipo de cubrimiento de la póliza:</label>
   <div>
-    <select type="number" formControlName="coveringType">
+    <select formControlName="coveringType">
       <option [ngValue]="0" selected>Terremoto</option>
       <option [ngValue]="1">Incendio</option>
       <option [ngValue]="2">Robo</option>
@@ -22,7 +22,7 @@
   <div><input type="number" formControlName="price"></div>
   <label for="riskType">Tipo de Riesgo:</label>
   <div>
-    <select type="number" formControlName="riskType">
+    <select formControlName="riskType">
       <option [ngValue]="0" selected>Bajo</option>
       <option [ngValue]="1">Medio</option>
       <option [ngValue]="2">Medio-Alto</option>

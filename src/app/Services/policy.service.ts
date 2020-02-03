@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError, from } from 'rxjs'; ////Libreria de JS que se fundamenta en RX
+import { Observable, throwError } from 'rxjs'; ////Libreria de JS que se fundamenta en RX
 import { retry, catchError } from 'rxjs/operators'; ////Libreria de JS que se fundamenta en RX
 
 @Injectable({
@@ -12,11 +12,14 @@ export class PolicyService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': "application/json",
+      'Authorization': "Bearer " + localStorage.getItem('token')
     })
   }
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status >= 500) {
@@ -25,7 +28,7 @@ export class PolicyService {
   }
 
   public getAllPolicies(): Observable<any> {
-    return this.http.get(`${this.baseApi}/GetAllPolicies`).pipe(
+    return this.http.get(`${this.baseApi}/GetAllPolicies`, this.httpOptions).pipe(
       retry(2), catchError(this.handleError)
     )
   }

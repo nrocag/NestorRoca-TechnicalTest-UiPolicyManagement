@@ -36,8 +36,6 @@ export class PolicyListComponent implements OnInit {
   }
 
   delete(id: string) {
-    console.log(id);
-
     this.apiService.deletePolicy(id).subscribe(response => {
       if (response.actionResponse.success) {
         this.getData();
