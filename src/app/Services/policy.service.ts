@@ -8,7 +8,7 @@ import { retry, catchError } from 'rxjs/operators'; ////Libreria de JS que se fu
 })
 export class PolicyService {
 
-  private baseApi = 'https://localhost:44379/policy/v1'
+  private baseApi = 'https://policymanagement-api.azurewebsites.net/policy/v1'
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -23,6 +23,7 @@ export class PolicyService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status >= 500) {
+      alert('Ah ocurrido un fallo inesperado, intente nuevamente!');
       return throwError('Error calling the Api'); ////Redirect a pagina de error
     }
   }
@@ -33,9 +34,25 @@ export class PolicyService {
     )
   }
 
+  public getPolicyById(id: string): Observable<any> {
+    return this.http.get(`${this.baseApi}/GetByPolicyId?id=${id}`, this.httpOptions).pipe(
+      retry(2), catchError(this.handleError)
+    )
+  }
+
   public createPolicy(policy: any): Observable<any> {
     return this.http.post(
       `${`${this.baseApi}/CreatePolicy`}`,
+      JSON.stringify(policy),
+      this.httpOptions)
+      .pipe(
+        retry(0), catchError(this.handleError)
+      )
+  }
+
+  public updatePolicy(policy: any): Observable<any> {
+    return this.http.put(
+      `${`${this.baseApi}/UpdatePolicy`}`,
       JSON.stringify(policy),
       this.httpOptions)
       .pipe(

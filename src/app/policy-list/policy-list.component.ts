@@ -21,7 +21,7 @@ export class PolicyListComponent implements OnInit {
         this.policies = response.policies;
       }
       else {
-        ////Presentar mensaje.
+        alert(response.actionResponse.message.text);
       }
     });
   }
@@ -31,8 +31,7 @@ export class PolicyListComponent implements OnInit {
   }
 
   edit(id: string) {
-    console.log(id);
-    //this.router.navigate(['policynew']);
+    this.router.navigate(['policyedit'], { queryParams: { id: id } });
   }
 
   delete(id: string) {
@@ -40,11 +39,9 @@ export class PolicyListComponent implements OnInit {
       if (response.actionResponse.success) {
         this.getData();
       }
-      else {
-        ////Presentar mensaje.
-      }
+
+      alert(response.actionResponse.message.text);
     });
-    //this.router.navigate(['policynew']);
   }
 
   ngOnInit() {

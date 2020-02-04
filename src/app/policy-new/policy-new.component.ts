@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class PolicyNewComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private apiService: PolicyService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private apiService: PolicyService, private router: Router) {
 
   }
 
@@ -27,23 +27,16 @@ export class PolicyNewComponent implements OnInit {
   });
 
   private createForm(model: Policy): FormGroup {
-    return this.fb.group(model);
-  }
-
-  private updateForm(model: Partial<Policy>): void {
-    this.policyForm.patchValue(model)
+    return this.formBuilder.group(model);
   }
 
   save() {
-
-    localStorage.setItem
     this.apiService.createPolicy(this.policyForm.value).subscribe(response => {
       if (response.actionResponse.success) {
         this.router.navigate(['policies']);
       }
-      else {
-        ////Presentar mensaje.
-      }
+
+      alert(response.actionResponse.message.text);
     });
   }
 

@@ -10,7 +10,7 @@ import { Login } from '../Entities/login';
 })
 export class AuthenticationService {
 
-  private baseApi = 'https://localhost:44303/Security/v1'
+  private baseApi = 'https://policymanagement-security.azurewebsites.net/Security/v1'
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -22,6 +22,7 @@ export class AuthenticationService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status >= 500) {
+      alert('Ah ocurrido un fallo inesperado, intente nuevamente!');
       return throwError('Error calling the Api'); ////Redirect a pagina de error
     }
   }

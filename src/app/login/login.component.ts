@@ -33,8 +33,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token', response.token);
       this.router.navigate(['policies']);
     }, err => {
-      localStorage.removeItem('token');
+      //localStorage.removeItem('token');
       console.log(err);
+      alert('Usuario ')
     });
   }
 

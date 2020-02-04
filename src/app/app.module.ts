@@ -9,13 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PolicyNewComponent } from './policy-new/policy-new.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { PolicyEditComponent } from './policy-edit/policy-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PolicyListComponent,
     PolicyNewComponent,
-    LoginComponent
+    LoginComponent,
+    PolicyEditComponent
   ],
   imports: [
     BrowserModule,
