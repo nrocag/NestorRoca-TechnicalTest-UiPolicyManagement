@@ -32,10 +32,6 @@ export class LoginComponent implements OnInit {
     this.apiService.authenticate(this.loginForm.value).subscribe(response => {
       localStorage.setItem('token', response.token);
       this.router.navigate(['policies']);
-    }, err => {
-      //localStorage.removeItem('token');
-      console.log(err);
-      alert('Usuario ')
     });
   }
 

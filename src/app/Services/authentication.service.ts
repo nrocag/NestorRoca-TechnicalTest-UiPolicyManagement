@@ -25,6 +25,9 @@ export class AuthenticationService {
       alert('Ah ocurrido un fallo inesperado, intente nuevamente!');
       return throwError('Error calling the Api'); ////Redirect a pagina de error
     }
+    else {
+      alert('Usuario o contraseña invalida')
+    }
   }
 
   public authenticate(logindata: Login): Observable<any> {

@@ -26,6 +26,10 @@ export class PolicyService {
       alert('Ah ocurrido un fallo inesperado, intente nuevamente!');
       return throwError('Error calling the Api'); ////Redirect a pagina de error
     }
+
+    if (error.status === 403) {
+      alert('No posee permisos para ejecutar esta funcionalidad');
+    }
   }
 
   public getAllPolicies(): Observable<any> {
